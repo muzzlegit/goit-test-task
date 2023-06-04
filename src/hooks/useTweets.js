@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { getFollowList } from 'state/userSlice';
 import { useGetTweetsQuery, useGetTweetsAmoutQuery } from 'state/api';
@@ -9,7 +9,7 @@ const useTweets = filter => {
   const [page, setPage] = useState(1);
   const [firstTweetId, setfirstTweetId] = useState(null);
   const followingList = useSelector(getFollowList);
-
+  const [filteredTweets, setFilteredTweets] = useState(tweets);
   const { data: tweetsAmount } = useGetTweetsAmoutQuery();
   const { data, isLoading, isError } = useGetTweetsQuery(page);
 
@@ -22,8 +22,14 @@ const useTweets = filter => {
       setTweets(prev => {
         let newTweets = [...prev];
         data.forEach(element => {
-          if (!newTweets.find(({ id }) => id === element.id))
+          if (!newTweets.find(({ id }) => id === element.id)) {
             newTweets = [...newTweets, element];
+          } else {
+            newTweets = [
+              ...newTweets.filter(({ id }) => id !== element.id),
+              element,
+            ];
+          }
         });
         return newTweets;
       });
@@ -36,23 +42,29 @@ const useTweets = filter => {
       block: 'start',
     });
   }, [firstTweetId]);
+  useEffect(() => {
+    switch (filter) {
+      case 'all':
+        setFilteredTweets(tweets);
+        break;
+      case 'follow':
+        setFilteredTweets(
+          tweets.filter(({ id }) => !followingList.includes(id))
+        );
+        break;
+      case 'following':
+        setFilteredTweets(
+          tweets.filter(({ id }) => followingList.includes(id))
+        );
+        break;
+      default:
+        break;
+    }
+  }, [tweets, followingList, filter]);
 
   const getNextTweets = () => {
     setPage(prev => prev + 1);
   };
-
-  const filteredTweets = useMemo(() => {
-    switch (filter) {
-      case 'all':
-        return tweets;
-      case 'follow':
-        return tweets.filter(({ id }) => !followingList.includes(id));
-      case 'following':
-        return tweets.filter(({ id }) => followingList.includes(id));
-      default:
-        break;
-    }
-  }, [tweets, filter, followingList]);
 
   return {
     tweets,
