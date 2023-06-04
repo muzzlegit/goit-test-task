@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { getFollowList } from 'state/userSlice';
 import { useGetTweetsQuery, useGetTweetsAmoutQuery } from 'state/api';
