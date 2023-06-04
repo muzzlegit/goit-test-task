@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { BiFilter } from 'react-icons/bi';
-
 const OPTIONS = ['all', 'follow', 'following'];
 
 const Filter = ({ filter, setFilter }) => {

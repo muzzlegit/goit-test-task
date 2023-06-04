@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux/es/exports';
 import { useAddFollowMutation } from 'state/api';
 import { addUser, removeUser, getFollowList } from 'state/userSlice';
 import { addFollowig, removeFollowing, errorToast } from 'utils/toasts';
+import { motion } from 'framer-motion';
 
 const Card = ({ tweet }) => {
   const { id, tweets, followers, avatar, user } = tweet;
@@ -46,48 +47,56 @@ const Card = ({ tweet }) => {
   };
 
   return (
-    <article
-      className="relative w-[380px] h-[460px] shadow-cardShadow bg-articleBg rounded-[20px]"
-      id={id}
+    <motion.div
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.6,
+        delay: 0.3,
+        ease: [0, 0.71, 0.2, 1.01],
+      }}
     >
-      <div className=" relative h-[178px]">
-        <a
-          className="inline-block pl-[20px] pt-[20px]"
-          href="https://www.youtube.com/"
-        >
-          <Logo className="h-full inline-block" />
-        </a>
-        <BgPicture className="absolute z-10  top-[28px] left-1/2 -translate-x-1/2" />
-      </div>
+      <article
+        className="relative w-[380px] h-[460px] shadow-cardShadow bg-articleBg rounded-[20px]"
+        id={id}
+      >
+        <div className=" relative h-[178px]">
+          <a className="inline-block pl-[20px] pt-[20px]" href="/">
+            <Logo className="h-full inline-block" />
+          </a>
+          <BgPicture className="absolute z-10  top-[28px] left-1/2 -translate-x-1/2" />
+        </div>
 
-      <div className="mb-[26px] h-[80px] flex items-center">
-        <Line />
-        <UserFrame className="absolute z-20 left-1/2 -translate-x-1/2" />
-        <img
-          className="absolute z-30 left-1/2 -translate-x-1/2 w-[56px] rounded-[50%]"
-          src={avatar}
-          alt={user}
-        />
-      </div>
-      <div className="text-center">
-        <p className="mb-[16px] text-text font-medium text-[20px]/[24px] uppercase">
-          {tweets.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} tweets
-        </p>
-        <p className="mb-[26px] text-text font-medium text-[20px]/[24px] uppercase">
-          {followers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} followers
-        </p>
-        <button
-          id={id}
-          className={`w-[196px] h-[50px] px-[28px] py-[14px] ${
-            isFollowing ? 'bg-activeButtonBg' : 'bg-buttonBg'
-          } rounded-[10px] shadow-buttonShadow cursor-pointer text-textSecondary font-semibold text-[18px]/[22px] uppercase`}
-          type="button"
-          onClick={onButtonClick}
-        >
-          {isFollowing ? 'following' : 'Follow'}
-        </button>
-      </div>
-    </article>
+        <div className="mb-[26px] h-[80px] flex items-center">
+          <Line />
+          <UserFrame className="absolute z-20 left-1/2 -translate-x-1/2" />
+          <img
+            className="absolute z-30 left-1/2 -translate-x-1/2 w-[56px] rounded-[50%]"
+            src={avatar}
+            alt={user}
+          />
+        </div>
+        <div className="text-center">
+          <p className="mb-[16px] text-text font-medium text-[20px]/[24px] uppercase">
+            {tweets.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} tweets
+          </p>
+          <p className="mb-[26px] text-text font-medium text-[20px]/[24px] uppercase">
+            {followers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}{' '}
+            followers
+          </p>
+          <button
+            id={id}
+            className={`w-[196px] h-[50px] px-[28px] py-[14px] ${
+              isFollowing ? 'bg-activeButtonBg' : 'bg-buttonBg'
+            } rounded-[10px] shadow-buttonShadow cursor-pointer text-textSecondary font-semibold text-[18px]/[22px] uppercase`}
+            type="button"
+            onClick={onButtonClick}
+          >
+            {isFollowing ? 'following' : 'Follow'}
+          </button>
+        </div>
+      </article>
+    </motion.div>
   );
 };
 

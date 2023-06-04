@@ -1,18 +1,22 @@
 import { Route, Routes } from 'react-router-dom';
-
-import Layout from 'components/pageComponents/Layout';
-import Home from 'pages/Home';
-import Tweets from 'pages/Tweets';
+import { lazy, Suspense } from 'react';
+import Loading from 'components/Loading';
+const Layout = lazy(() => import('components/pageComponents/Layout'));
+const Home = lazy(() => import('pages/Home'));
+const Tweets = lazy(() => import('pages/Tweets'));
+const NotFoundPage = lazy(() => import('components/NotFoundPage'));
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="/tweets" element={<Tweets />} />
-        {/* <Route path="*" element={<NotFoundPage />} /> */}
-      </Route>
-    </Routes>
+    <Suspense fallback={<Loading />}>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/tweets" element={<Tweets />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+    </Suspense>
   );
 }
 

@@ -26,10 +26,6 @@ export const api = createApi({
       }),
       invalidatesTags: ['tweets'],
     }),
-    // deleteContact: builder.mutation({
-    //   query: id => ({ url: `/contacts/${id}`, method: 'DELETE' }),
-    //   invalidatesTags: ['Contacts'],
-    // }),
   }),
 });
 

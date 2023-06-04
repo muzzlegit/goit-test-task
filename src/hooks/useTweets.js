@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { getFollowList } from 'state/userSlice';
 import { useGetTweetsQuery, useGetTweetsAmoutQuery } from 'state/api';
 import { errorToast } from 'utils/toasts';
+
 const useTweets = filter => {
   const [tweets, setTweets] = useState([]);
   const [page, setPage] = useState(1);
