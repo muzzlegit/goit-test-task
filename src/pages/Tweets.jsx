@@ -9,7 +9,7 @@ const Tweets = () => {
   return (
     <section>
       <h2 className="hidden">Tweets List</h2>
-      <div className="mx-auto px-[12px]  w-[460px] md:w-[860px] lg:w-[1260px] ">
+      <div className="mx-auto px-[12px]  w-[460px] md:w-[860px] lg:w-[1280px] ">
         <div className="mb-[12px]  flex justify-center items-center gap-[20px]">
           <button
             className={` w-[196px] h-[50px] px-[28px] py-[14px]
