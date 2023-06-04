@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { getFollowList } from 'state/userSlice';
 import { useGetTweetsQuery, useGetTweetsAmoutQuery } from 'state/api';
@@ -9,10 +9,8 @@ const useTweets = filter => {
   const [page, setPage] = useState(1);
   const [firstTweetId, setfirstTweetId] = useState(null);
   const followingList = useSelector(getFollowList);
-  const [filteredTweets, setFilteredTweets] = useState(tweets);
   const { data: tweetsAmount } = useGetTweetsAmoutQuery();
   const { data, isLoading, isError } = useGetTweetsQuery(page);
-
   if (isError) errorToast();
 
   useEffect(() => {
@@ -42,21 +40,15 @@ const useTweets = filter => {
       block: 'start',
     });
   }, [firstTweetId]);
-  useEffect(() => {
+
+  const filteredTweets = useMemo(() => {
     switch (filter) {
       case 'all':
-        setFilteredTweets(tweets);
-        break;
+        return tweets;
       case 'follow':
-        setFilteredTweets(
-          tweets.filter(({ id }) => !followingList.includes(id))
-        );
-        break;
+        return tweets.filter(({ id }) => !followingList.includes(id));
       case 'following':
-        setFilteredTweets(
-          tweets.filter(({ id }) => followingList.includes(id))
-        );
-        break;
+        return tweets.filter(({ id }) => followingList.includes(id));
       default:
         break;
     }

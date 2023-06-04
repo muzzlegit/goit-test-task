@@ -37,6 +37,7 @@ const Card = ({ tweet }) => {
           addFollowig(user);
         }
       }
+
       if (error) {
         throw error;
       }

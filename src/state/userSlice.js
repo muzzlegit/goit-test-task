@@ -16,7 +16,7 @@ export const userSlice = createSlice({
     },
   },
 });
-//persist setup
+
 const persistConfig = {
   key: 'root',
   storage,
