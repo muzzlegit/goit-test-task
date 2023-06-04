@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/muzzlegit/goit-test-task/static/css/main.5983b86f.css",
+    "main.js": "/muzzlegit/goit-test-task/static/js/main.83fc71bf.js",
+    "static/css/435.45bc41e0.chunk.css": "/muzzlegit/goit-test-task/static/css/435.45bc41e0.chunk.css",
+    "static/js/435.a3e4bf95.chunk.js": "/muzzlegit/goit-test-task/static/js/435.a3e4bf95.chunk.js",
+    "static/js/425.7ff44ff2.chunk.js": "/muzzlegit/goit-test-task/static/js/425.7ff44ff2.chunk.js",
+    "static/js/112.2b96291b.chunk.js": "/muzzlegit/goit-test-task/static/js/112.2b96291b.chunk.js",
+    "static/js/694.b9e6cb49.chunk.js": "/muzzlegit/goit-test-task/static/js/694.b9e6cb49.chunk.js",
+    "static/js/648.7c3154a9.chunk.js": "/muzzlegit/goit-test-task/static/js/648.7c3154a9.chunk.js",
+    "static/js/85.c95180f4.chunk.js": "/muzzlegit/goit-test-task/static/js/85.c95180f4.chunk.js",
+    "static/js/500.2d2c16c8.chunk.js": "/muzzlegit/goit-test-task/static/js/500.2d2c16c8.chunk.js",
+    "static/media/User.svg": "/muzzlegit/goit-test-task/static/media/User.9545d48205a43e204e631ba2b99ad9ff.svg",
+    "static/media/picture.svg": "/muzzlegit/goit-test-task/static/media/picture.23dcbc3cc8ccc9682f24b4acffb5efb2.svg",
+    "static/media/logo.svg": "/muzzlegit/goit-test-task/static/media/logo.e917114d7945c04c85a8946a331d28b6.svg",
+    "index.html": "/muzzlegit/goit-test-task/index.html",
+    "static/media/frame.svg": "/muzzlegit/goit-test-task/static/media/frame.514d56b979808b8b27f05f186755d6c7.svg",
+    "static/media/line.svg": "/muzzlegit/goit-test-task/static/media/line.c94fa956ae238ba295173ed09ddba7bf.svg",
+    "main.5983b86f.css.map": "/muzzlegit/goit-test-task/static/css/main.5983b86f.css.map",
+    "main.83fc71bf.js.map": "/muzzlegit/goit-test-task/static/js/main.83fc71bf.js.map",
+    "435.45bc41e0.chunk.css.map": "/muzzlegit/goit-test-task/static/css/435.45bc41e0.chunk.css.map",
+    "435.a3e4bf95.chunk.js.map": "/muzzlegit/goit-test-task/static/js/435.a3e4bf95.chunk.js.map",
+    "425.7ff44ff2.chunk.js.map": "/muzzlegit/goit-test-task/static/js/425.7ff44ff2.chunk.js.map",
+    "112.2b96291b.chunk.js.map": "/muzzlegit/goit-test-task/static/js/112.2b96291b.chunk.js.map",
+    "694.b9e6cb49.chunk.js.map": "/muzzlegit/goit-test-task/static/js/694.b9e6cb49.chunk.js.map",
+    "648.7c3154a9.chunk.js.map": "/muzzlegit/goit-test-task/static/js/648.7c3154a9.chunk.js.map",
+    "85.c95180f4.chunk.js.map": "/muzzlegit/goit-test-task/static/js/85.c95180f4.chunk.js.map",
+    "500.2d2c16c8.chunk.js.map": "/muzzlegit/goit-test-task/static/js/500.2d2c16c8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5983b86f.css",
+    "static/js/main.83fc71bf.js"
+  ]
+}
