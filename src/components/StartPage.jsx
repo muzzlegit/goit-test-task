@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useGetTweetsAmoutQuery } from 'state/api';
 import { getFollowList } from 'state/userSlice';
+
 import { motion } from 'framer-motion';
 
 import { ReactComponent as User } from 'assets/images/User.svg';
@@ -24,7 +25,7 @@ const StartPage = () => {
           Welcome!
         </h2>
         <p className="text-[30px]">
-          Toaday, we have
+          Today, we have
           <span className="ml-[8px] text-text">
             {tweetsAmount ? tweetsAmount : 0}
           </span>
