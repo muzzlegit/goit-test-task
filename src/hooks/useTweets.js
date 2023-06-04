@@ -56,8 +56,18 @@ const useTweets = filter => {
         }
         return tweets;
       case 'follow':
+        if (updatedUser) {
+          return tweets
+            .map(tweet => (tweet.id === updatedUser.id ? updatedUser : tweet))
+            .filter(({ id }) => !followingList.includes(id));
+        }
         return tweets.filter(({ id }) => !followingList.includes(id));
       case 'following':
+        if (updatedUser) {
+          return tweets
+            .map(tweet => (tweet.id === updatedUser.id ? updatedUser : tweet))
+            .filter(({ id }) => followingList.includes(id));
+        }
         return tweets.filter(({ id }) => followingList.includes(id));
       default:
         break;
