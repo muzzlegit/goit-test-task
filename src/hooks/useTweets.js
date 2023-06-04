@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { getFollowList } from 'state/userSlice';
 import { useGetTweetsQuery, useGetTweetsAmoutQuery } from 'state/api';
@@ -11,6 +11,7 @@ const useTweets = filter => {
   const followingList = useSelector(getFollowList);
   const { data: tweetsAmount } = useGetTweetsAmoutQuery();
   const { data, isLoading, isError } = useGetTweetsQuery(page);
+  const [updatedUser, setUpdatedUser] = useState(null);
   if (isError) errorToast();
 
   useEffect(() => {
@@ -41,9 +42,18 @@ const useTweets = filter => {
     });
   }, [firstTweetId]);
 
+  const updateUser = user => {
+    setUpdatedUser(user);
+  };
+
   const filteredTweets = useMemo(() => {
     switch (filter) {
       case 'all':
+        if (updatedUser) {
+          return tweets.map(tweet =>
+            tweet.id === updatedUser.id ? updatedUser : tweet
+          );
+        }
         return tweets;
       case 'follow':
         return tweets.filter(({ id }) => !followingList.includes(id));
@@ -52,7 +62,7 @@ const useTweets = filter => {
       default:
         break;
     }
-  }, [tweets, followingList, filter]);
+  }, [tweets, followingList, filter, updatedUser]);
 
   const getNextTweets = () => {
     setPage(prev => prev + 1);
@@ -66,6 +76,7 @@ const useTweets = filter => {
     getNextTweets,
     isLoading,
     isError,
+    updateUser,
   };
 };
 

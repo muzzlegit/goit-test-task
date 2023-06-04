@@ -10,7 +10,7 @@ import { addUser, removeUser, getFollowList } from 'state/userSlice';
 import { addFollowig, removeFollowing, errorToast } from 'utils/toasts';
 import { motion } from 'framer-motion';
 
-const Card = ({ tweet }) => {
+const Card = ({ tweet, updateUser }) => {
   const { id, tweets, followers, avatar, user } = tweet;
   const followList = useSelector(getFollowList);
   const dispatch = useDispatch();
@@ -37,7 +37,7 @@ const Card = ({ tweet }) => {
           addFollowig(user);
         }
       }
-
+      updateUser(data);
       if (error) {
         throw error;
       }

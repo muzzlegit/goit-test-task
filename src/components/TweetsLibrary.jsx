@@ -6,6 +6,7 @@ import { Circles } from 'react-loader-spinner';
 
 const TweetsLibrary = ({ filter }) => {
   const {
+    updateUser,
     tweets,
     filteredTweets,
     tweetsAmount,
@@ -50,7 +51,11 @@ const TweetsLibrary = ({ filter }) => {
               <div className="h-[460px] overflow-y-auto  flex flex-wrap justify-start gap-[20px] ">
                 {filteredTweets?.length ? (
                   filteredTweets?.map(tweet => (
-                    <Card key={tweet.id} tweet={tweet} />
+                    <Card
+                      key={tweet.id}
+                      tweet={tweet}
+                      updateUser={updateUser}
+                    />
                   ))
                 ) : (
                   <p className="mx-auto text-acent text-[30px]">
